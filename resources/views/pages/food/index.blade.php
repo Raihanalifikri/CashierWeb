@@ -36,7 +36,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                     <td>{{ $food->name }}</td>
-                                    <td>{{ $food->price }}</td>
+                                    <td>Rp{{ $food->price }}</td>
                                     <td>{{ $food->category->name }}</td>
                                     <td>
                                             <a href="{{ route('food.edit', $food->id) }}" class="btn btn-icon btn-success"><i

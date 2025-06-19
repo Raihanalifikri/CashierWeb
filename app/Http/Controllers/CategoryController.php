@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Food;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,9 +19,16 @@ class CategoryController extends Controller
         return view('pages.category.index', compact('categories'));
     }
 
-    public function show($id){
+    public function show(Request $request,$id){
         $category = Category::findOrFail($id);
-        return view('pages.category.show', compact('category'));
+        $foods = Food::where('category_id', $id)
+            ->when($request->input('name'), function ($query, $name) {
+                $query->where('name', 'like', '%' . $name . '%');
+            })
+            ->orderBy('id', 'desc')
+            ->paginate(5);
+
+        return view('pages.category.show', compact('category', 'foods'));
     }
 
     public function create(){

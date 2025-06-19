@@ -45,13 +45,15 @@ class FoodController extends Controller
         $food->user_id = auth()->id();
         $food->name = $request->name;
         $food->price = $request->price;
-        $food->save();
+       
 
         // Upload photo
     if ($request->hasFile('photo')) {
         $photoPath = $request->file('photo')->store('photos', 'public');
         $food->photo = $photoPath;
     }
+
+     $food->save();
 
 
         return redirect()->route('food.index')->with('success', 'Food created successfully');

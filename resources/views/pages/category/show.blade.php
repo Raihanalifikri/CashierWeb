@@ -23,18 +23,18 @@
                     <div class="card-body col-6">
                         <div class="card ">
                             <div class="card-header">
-                                <h4>{{ $row->name }}</h4>
+                                <h4>{{ $food->name }}</h4>
                                 <div class="card-header-action">
                                     <a href="#" class="btn btn-primary">View All</a>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="text-muted mb-2">{{  \Illuminate\Support\Str::words(strip_tags($row->content), 5, '...') }}</div>
+                                <div class="text-muted mb-2">{{ $food->price }}</div>
                                 <div class="chocolat-parent">
                                     <a href="" class="chocolat-image"
                                         title="Just an example">
                                         <div data-crop-image="285">
-                                            <img alt="image" src="{{ asset('storage/' . $row->photo) }}"
+                                            <img alt="image" src="{{ asset('storage/'. $food->photo) }}"
                                                 class="img-fluid">
                                         </div>
                                     </a>
